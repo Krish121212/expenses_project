@@ -12,7 +12,6 @@ Nor="\e[0m"
 if [ $userid != 0 ]
 then
     echo "please run package with super user access: failure"
-    exit 1
 else
     echo -e "you are super user: $Green SUCCESS $Nor"
 fi
