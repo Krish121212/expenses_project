@@ -39,10 +39,10 @@ Validate $? "starting mysql"
 mysql -h 18.212.230.225 -uroot -pKrish@1212 -e "show databases" &>>$LOGFILE
     if [ $? != 0 ]
     then
-        echo -e "password is already set for mysql DB $Yellow Skipping $Nor"
-    else
         mysql_secure_installation --set-root-pass Krish@1212 &>>$LOGFILE
         Validate $? "password is set for mysql: $Green SUCCESS $Nor"
+    else       
+        echo -e "password is already set for mysql DB $Yellow Skipping $Nor"    
     fi
 
     
