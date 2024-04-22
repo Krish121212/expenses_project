@@ -1,4 +1,4 @@
 #!/bin/bash/
 
-PWD
+echo "$PWD"
 echo "$?"
