@@ -19,7 +19,7 @@ else
 fi
 }
 
-dnf install mysql -y &>>$LOGFILE
+dnf install mysql-server -y &>>$LOGFILE
 Validate $? echo -e "Installing mysql: $Green SUCCESS $Nor"
 
 systemctl enable mysqld &>>$LOGFILE
