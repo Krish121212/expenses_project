@@ -15,11 +15,11 @@ then
     echo "please run package with super user access: failure"
     exit 1
 else
-    echo "you are super user: success"
+    echo -e "you are super user: $Green SUCCESS $Nor"
 fi
 }
 
-dnf install mysql-y &>>$LOGFILE
+dnf install mysql -y &>>$LOGFILE
 Validate $? echo -e "Installing mysql: $Green SUCCESS $Nor"
 
 systemctl enable mysqld &>>$LOGFILE
