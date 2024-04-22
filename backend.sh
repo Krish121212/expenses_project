@@ -44,7 +44,7 @@ id expense &>>$LOGFILE
         useradd expense 
         Validate $? "creating expense user"
     else
-        echo "Expense usr already created $Yellow Skipping $Nor"
+        echo -e "Expense user already created $Yellow Skipping $Nor" 
     fi
 
 mkdir -p /app &>>$LOGFILE
