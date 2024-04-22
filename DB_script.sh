@@ -17,7 +17,7 @@ else
     echo -e "you are super user: $Green SUCCESS $Nor"
 fi
 
-VALIDATE(){
+Validate(){
    if [ $1 != 0 ]
    then
         echo -e "$2...$Red FAILURE $Nor"
