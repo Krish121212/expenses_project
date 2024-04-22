@@ -46,5 +46,3 @@ mysql -h 18.212.230.225 -uroot -p${DB_password} -e "show databases" &>>$LOGFILE
     else       
         echo -e "password is already set for mysql DB $Yellow Skipping $Nor"    
     fi
-
-    
