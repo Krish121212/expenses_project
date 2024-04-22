@@ -12,6 +12,7 @@ Nor="\e[0m"
 if [ $userid != 0 ]
 then
     echo "please run package with super user access: failure"
+    exit 1
 else
     echo -e "you are super user: $Green SUCCESS $Nor"
 fi
@@ -35,5 +36,11 @@ Validate $? "enabling mysql"
 systemctl start mysqld &>>$LOGFILE
 Validate $? "starting mysql"
 
-mysql_secure_installation --set-root-pass Krish@1212 &>>$LOGFILE
-Validate $? "password set for mysql DB"
+mysql -h 18.212.230.225 -uroot -pKrish@1212 &>>$LOGFILE
+    if [ $? = 0 ]
+    then
+        echo -e "password is already set for mysql: $Yellow Skipping $Nor"
+    else
+        mysql_secure_installation --set-root-pass Krish@1212 &>>$LOGFILE
+        Validate $? "password set for mysql DB"
+    fi
