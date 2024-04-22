@@ -36,7 +36,7 @@ Validate $? "enabling mysql"
 systemctl start mysqld &>>$LOGFILE
 Validate $? "starting mysql"
 
-mysql -h 18.212.230.225 -uroot -pKrish@1212 &>>$LOGFILE
+mysql -h 18.212.230.225 -uroot -pKrish@1212 -e "show databases" &>>$LOGFILE
     if [ $? != 0 ]
     then
         echo -e "password is already set for mysql DB $Yellow Skipping $Nor"
