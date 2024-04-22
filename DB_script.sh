@@ -9,7 +9,6 @@ Green="\e[32m"
 Yellow="\e[33m"
 Nor="\e[0m"
 
-Validate(){
 if [ $userid != 0 ]
 then
     echo "please run package with super user access: failure"
@@ -17,17 +16,25 @@ then
 else
     echo -e "you are super user: $Green SUCCESS $Nor"
 fi
+
+VALIDATE(){
+   if [ $1 != 0 ]
+   then
+        echo -e "$2...$Red FAILURE $Nor"
+        exit 1
+    else
+        echo -e "$2...$Green SUCCESS $Nor"
+    fi
 }
 
 dnf install mysql-server -y &>>$LOGFILE
-Validate $? echo -e "Installing mysql: $Green SUCCESS $Nor"
+Validate $? "Installing mysql server"
 
 systemctl enable mysqld &>>$LOGFILE
-Validate $? echo -e "enabling mysql: $Green SUCCESS $Nor"
+Validate $? "enabling mysql"
 
 systemctl start mysqld &>>$LOGFILE
-Validate $? echo -e "starting mysql: $Green SUCCESS $Nor"
+Validate $? "starting mysql"
 
 mysql_secure_installation --set-root-pass Krish@1212 &>>$LOGFILE
-Validate $? echo -e "starting mysql: $Green SUCCESS $Nor"
-
+Validate $? "password set for mysql DB"
