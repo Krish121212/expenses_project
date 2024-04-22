@@ -38,10 +38,10 @@ Validate $? "enabling mysql"
 systemctl start mysqld &>>$LOGFILE
 Validate $? "starting mysql"
 
-mysql -h 18.212.230.225 -uroot -p$(DB_password) -e "show databases" &>>$LOGFILE
+mysql -h 18.212.230.225 -uroot -p${DB_password} -e "show databases" &>>$LOGFILE
     if [ $? != 0 ]
     then
-        mysql_secure_installation --set-root-pass $(DB_password) &>>$LOGFILE
+        mysql_secure_installation --set-root-pass ${DB_password} &>>$LOGFILE
         Validate $? "password is set for mysql: $Green SUCCESS $Nor"
     else       
         echo -e "password is already set for mysql DB $Yellow Skipping $Nor"    
